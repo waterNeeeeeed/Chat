@@ -1,4 +1,4 @@
-package runfeng.chat.controller;
+Ôªøpackage runfeng.chat.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,28 +15,28 @@ import runfeng.chat.service.ChatService;
  */
 @WebServlet("/login.do")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /**
-     * Default constructor. 
+     * Default constructor.
      */
     public LoginServlet() {
         // TODO Auto-generated constructor stub
     }
-    
+
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-    	String username = req.getParameter("username");
-    	String password = req.getParameter("password");
-    	
-    	if (true == ChatDBUtils.getInstance().validLogin(username, password)){
-    		req.setAttribute("tip", "µ«¬º≥…π¶");
-    	}else{
-    		req.setAttribute("tip", "µ«¬º ß∞‹");
-    	}
-    	
-    	req.getRequestDispatcher("/loginR").forward(req, resp);
-    	
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+
+        if (true == ChatDBUtils.getInstance().validLogin(username, password)) {
+            req.setAttribute("tip", "ÁôªÂΩïÊàêÂäü");
+        } else {
+            req.setAttribute("tip", "ÁôªÂΩïÂ§±Ë¥•");
+        }
+
+        req.getRequestDispatcher("/loginR").forward(req, resp);
+
     }
 
 }

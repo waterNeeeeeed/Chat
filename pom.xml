@@ -6,6 +6,27 @@
   <packaging>war</packaging>
  
  <dependencies>
+     <!-- Servlet -->
+     <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>javax.servlet-api</artifactId>
+         <version>3.1.0</version>
+         <scope>provided</scope>
+     </dependency>
+     <!-- JSP -->
+     <dependency>
+         <groupId>javax.servlet.jsp</groupId>
+         <artifactId>jsp-api</artifactId>
+         <version>2.2</version>
+         <scope>provided</scope>
+     </dependency>
+     <!-- JSTL -->
+     <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>jstl</artifactId>
+         <version>1.2</version>
+         <scope>runtime</scope>
+     </dependency>
  	<!-- Apache Commons DBUtils -->
 	<dependency>
 		<groupId>commons-dbutils</groupId>
@@ -37,11 +58,17 @@
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+      </plugin>
+      <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+            <encoding>utf-8</encoding>
         </configuration>
       </plugin>
       <plugin>

@@ -1,4 +1,4 @@
-package runfeng.chat.controller;
+ï»¿package runfeng.chat.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -14,8 +14,8 @@ import runfeng.chat.service.ChatDBUtils;
  */
 @WebServlet("/register")
 public class RegServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -24,33 +24,33 @@ public class RegServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	@Override
-	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		int age = 0;
-		if ("" != req.getParameter("age"))
-			age = Integer.parseInt(req.getParameter("age"));
-		
-		if (null == username || "" ==  username.trim() 
-				|| null == password || "" == password.trim()){
-			req.setAttribute("tip", "ÓÃ»§Ãû ÃÜÂë²»ÄÜÎª¿Õ ");
-		}
-		else{
-			try {
-				if (1 == ChatDBUtils.getInstance().insertUser(username, password, age)){
-					req.setAttribute("tip", "ÓÃ»§Ìí¼Ó³É¹¦ ");
-					
-				}
-				else{
-					req.setAttribute("tip", "ÓÃ»§Ìí¼ÓÊ§°Ü");
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				req.setAttribute("tp", e.getMessage());
-			}
-		}
-		req.getRequestDispatcher("/WEB-INF/regResult.jsp").forward(req, resp);
-	}
+    @Override
+    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        int age = 0;
+        if ("" != req.getParameter("age"))
+            age = Integer.parseInt(req.getParameter("age"));
+
+        if (null == username || "" ==  username.trim()
+                || null == password || "" == password.trim()){
+            req.setAttribute("tip", "ç”¨æˆ·å å¯†ç ä¸èƒ½ä¸ºç©º ");
+        }
+        else{
+            try {
+                if (1 == ChatDBUtils.getInstance().insertUser(username, password, age)){
+                    req.setAttribute("tip", "ç”¨æˆ·æ·»åŠ æˆåŠŸ ");
+
+                }
+                else{
+                    req.setAttribute("tip", "ç”¨æˆ·æ·»åŠ å¤±è´¥");
+                }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                req.setAttribute("tp", e.getMessage());
+            }
+        }
+        req.getRequestDispatcher("/WEB-INF/regResult.jsp").forward(req, resp);
+    }
 
 }

@@ -1,4 +1,4 @@
-package runfeng.chat.model;
+﻿package runfeng.chat.model;
 
 public class User {
 	private int id;
