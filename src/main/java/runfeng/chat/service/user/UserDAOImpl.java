@@ -18,9 +18,6 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
     }
 
     public int insertUser(String username, String password, int age){
-        if (validUserExisted(username)){
-            return 0;
-        }
         String sql = "INSERT INTO user (username, password, age) VALUES (?, ?, ?)";
         return executeUpdate(sql, username, password, age);
     }
@@ -37,23 +34,4 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
         return executeUpdate(sql, id);
     }
 
-    public boolean validUserExisted(String username){
-        User u = getUser(username);
-        if (null != u){
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean validLogin(String username, String password){
-        User u = getUser(username);
-        if (null != u){
-            if (u.validPassword(password)){
-                return true;
-            }
-        }
-
-        return false;
-    }
 }

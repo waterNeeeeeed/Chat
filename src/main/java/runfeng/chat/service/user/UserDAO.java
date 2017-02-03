@@ -10,6 +10,6 @@ public interface UserDAO {
     int insertUser(String username, String password, int age);
     User getUser(String username);
     int deleteUser(int id);
-    boolean validUserExisted(String username);
-    boolean validLogin(String username, String password);
+    //boolean validUserExisted(String username);
+    //boolean validLogin(String username, String password);
 }

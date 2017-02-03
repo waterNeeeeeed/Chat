@@ -1,5 +1,6 @@
 package runfeng.chat.controller;
 
+import runfeng.chat.action.user.ValidLoginAction;
 import runfeng.chat.service.DAOFactory;
 import runfeng.chat.service.user.UserDAO;
 
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         UserDAO userDAO = DAOFactory.getUserDAO();
-        if (true == userDAO.validLogin(username, password)) {
+        if (new ValidLoginAction().validLogin(username, password)) {
             req.setAttribute("tip", "登录成功");
         } else {
             req.setAttribute("tip", "登录失败");
