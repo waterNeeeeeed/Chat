@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static runfeng.chat.action.Action.SUCCESS;
+import static runfeng.chat.action.Action.USER_EXISTED;
+
 /**
  * Servlet implementation class RegServlet
  */
@@ -30,31 +33,19 @@ public class RegServlet extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        int age = 0;
+        String age = req.getParameter("age");
 
-        //UserDAO userDAO = DAOFactory.getUserDAO();
-
-        if ("" != req.getParameter("age"))
-            age = Integer.parseInt(req.getParameter("age"));
-
-        if (null == username || "" ==  username.trim()
-                || null == password || "" == password.trim()){
-            req.setAttribute("tip", "用户名 密码不能为空 ");
+        String result = new InsertUserAction().insertUser(username, password, age);
+        if (SUCCESS.equals(result)){
+            req.setAttribute("tip", "用户添加成功 ");
+        }
+        else if (USER_EXISTED.equals(result)) {
+            req.setAttribute("tip", "用户已存在");
         }
         else{
-            try {
-                if ("success".equals(new InsertUserAction().insertUser(username, password, age))){
-                    req.setAttribute("tip", "用户添加成功 ");
-
-                }
-                else{
-                    req.setAttribute("tip", "用户添加失败");
-                }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                req.setAttribute("tp", e.getMessage());
-            }
+            req.setAttribute("tip", "用户添加失败");
         }
+
         req.getRequestDispatcher("/WEB-INF/regResult.jsp").forward(req, resp);
     }
 

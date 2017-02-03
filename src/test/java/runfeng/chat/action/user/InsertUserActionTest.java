@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class InsertUserActionTest {
     @Test
     public void insertUser() throws Exception {
-        assertEquals("success", new InsertUserAction().insertUser("gtAction01", "1", 20));
+        assertEquals("success", new InsertUserAction().insertUser("gtAction01", "1", "20"));
     }
 
 }
