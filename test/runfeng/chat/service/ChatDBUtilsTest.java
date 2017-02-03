@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import runfeng.chat.model.User;
-
 public class ChatDBUtilsTest {
 
 	@Before
