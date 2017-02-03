@@ -43,7 +43,7 @@ public class RegServlet extends HttpServlet {
         }
         else{
             try {
-                if (1 == new InsertUserAction().insertUser(username, password, age)){
+                if ("success".equals(new InsertUserAction().insertUser(username, password, age))){
                     req.setAttribute("tip", "用户添加成功 ");
 
                 }

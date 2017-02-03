@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        UserDAO userDAO = DAOFactory.getUserDAO();
+        //UserDAO userDAO = DAOFactory.getUserDAO();
         if (new ValidLoginAction().validLogin(username, password)) {
             req.setAttribute("tip", "登录成功");
         } else {
