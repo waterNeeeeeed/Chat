@@ -1,6 +1,7 @@
 package runfeng.chat.controller;
 
-import runfeng.chat.service.ChatDBUtils;
+import runfeng.chat.service.DAOFactory;
+import runfeng.chat.service.user.UserDAO;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -29,6 +30,9 @@ public class RegServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         int age = 0;
+
+        UserDAO userDAO = DAOFactory.getUserDAO();
+
         if ("" != req.getParameter("age"))
             age = Integer.parseInt(req.getParameter("age"));
 
@@ -38,7 +42,7 @@ public class RegServlet extends HttpServlet {
         }
         else{
             try {
-                if (1 == ChatDBUtils.getInstance().insertUser(username, password, age)){
+                if (1 == userDAO.insertUser(username, password, age)){
                     req.setAttribute("tip", "用户添加成功 ");
 
                 }

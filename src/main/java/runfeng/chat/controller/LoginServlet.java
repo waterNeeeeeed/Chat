@@ -1,6 +1,7 @@
 package runfeng.chat.controller;
 
-import runfeng.chat.service.ChatDBUtils;
+import runfeng.chat.service.DAOFactory;
+import runfeng.chat.service.user.UserDAO;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -28,7 +29,8 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        if (true == ChatDBUtils.getInstance().validLogin(username, password)) {
+        UserDAO userDAO = DAOFactory.getUserDAO();
+        if (true == userDAO.validLogin(username, password)) {
             req.setAttribute("tip", "登录成功");
         } else {
             req.setAttribute("tip", "登录失败");
