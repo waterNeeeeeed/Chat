@@ -19,19 +19,11 @@ public class ChatDBCPTest {
 		Connection conn = instance.getConnection();
 		assertNotNull(conn);
 		//instance.releaseConnection(conn);
-		assertEquals(9, instance.closeConnList());
+		assertEquals(011, instance.closeConnList());
 		instance.getConnection();
 		assertEquals(8, instance.closeConnList());
 	}
 
-	@Test
-	public void testReleaseConnection() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testCloseConnList() {
-		fail("Not yet implemented");
-	}
 
 }
