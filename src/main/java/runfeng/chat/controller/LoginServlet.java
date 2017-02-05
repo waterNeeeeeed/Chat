@@ -33,11 +33,15 @@ public class LoginServlet extends HttpServlet {
         //UserDAO userDAO = DAOFactory.getUserDAO();
         if (new ValidLoginAction().validLogin(username, password)) {
             req.setAttribute("tip", "登录成功");
+            //???
+            req.getSession(true).setAttribute("user", username);
+            req.getRequestDispatcher("/loginR").forward(req, resp);
         } else {
             req.setAttribute("tip", "登录失败");
+            req.getRequestDispatcher("/loginE").forward(req, resp);
         }
 
-        req.getRequestDispatcher("/loginR").forward(req, resp);
+
 
     }
 

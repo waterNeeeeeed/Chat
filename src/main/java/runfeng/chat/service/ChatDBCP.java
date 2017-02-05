@@ -19,7 +19,7 @@ public class ChatDBCP implements DataSource{
     private static String username;
     private static String password;
 
-    private static int CONNECTION_NUM = 10;
+    private static int CONNECTION_NUM = 100;
     private static ChatDBCP instance = new ChatDBCP();
 
     static {
@@ -63,7 +63,7 @@ public class ChatDBCP implements DataSource{
 
     }
 
-    public void releaseConnection(Connection e){
+    public void freeConnection(Connection e){
         connList.add(e);
     }
 

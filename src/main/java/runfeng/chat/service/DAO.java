@@ -10,4 +10,5 @@ import java.sql.Connection;
 public interface DAO {
     //Connection getConnection();
     //QueryRunner getQR();
+    void releaseConnection(Connection conn);
 }

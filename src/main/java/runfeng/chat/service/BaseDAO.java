@@ -1,14 +1,20 @@
 package runfeng.chat.service;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 
 
 public class BaseDAO implements DAO{
-    private static QueryRunner run = new QueryRunner(ChatDBCP.getInstance());
+    private static QueryRunner run = new QueryRunner(MyCP.getInstance().getDS());
 
+    @Override
+    public void releaseConnection(Connection conn){
+        ChatDBCP.getInstance().freeConnection(conn);
+    }
 
     public<T> T executeQuery(String sql, ResultSetHandler<T> rsHandler, Object... args){
         try{

@@ -20,7 +20,7 @@ public class UserDAOImplTest {
     @Test
     public void insertUser() throws Exception {
         User u = new User();
-        u.setUsername("gt001");
+        u.setUsername("巩涛");
         u.setPassword("1123");
         u.setAge(20);
         UserDAO userDAO = DAOFactory.getUserDAO();
