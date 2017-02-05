@@ -26,10 +26,10 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>loginE</servlet-name>
-        <jsp-file>/WEB-INF/loginResultFailed.jsp</jsp-file>
+        <jsp-file>/WEB-INF/error.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>loginR</servlet-name>
-        <url-pattern>/loginR</url-pattern>
+        <servlet-name>loginE</servlet-name>
+        <url-pattern>/loginE</url-pattern>
     </servlet-mapping>
 </web-app>
