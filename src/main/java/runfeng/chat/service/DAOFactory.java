@@ -1,7 +1,7 @@
 package runfeng.chat.service;
 
 import runfeng.chat.service.user.UserDAOImpl;
-import runfeng.chat.service.user.msg.MsgDAOImpl;
+import runfeng.chat.service.msg.MsgDAOImpl;
 
 /**
  * Created by hasee-pc on 2017/2/3.

@@ -1,4 +1,4 @@
-package runfeng.chat.service.user.msg;
+package runfeng.chat.service.msg;
 
 import runfeng.chat.model.msg.Msg;
 

@@ -1,11 +1,9 @@
-package runfeng.chat.service.user.msg;
+package runfeng.chat.service.msg;
 
 import org.junit.Test;
 import runfeng.chat.model.msg.Msg;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static org.junit.Assert.*;
 

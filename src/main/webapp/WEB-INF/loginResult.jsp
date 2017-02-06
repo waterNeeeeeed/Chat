@@ -37,10 +37,18 @@ function sendRequest(){
 	
 }
 function processResponse(){
+    var json;
 	if (XMLHttpReq.readyState == 4){
 		if (XMLHttpReq.status == 200){
-			document.getElementById("chatArea").value
-				= XMLHttpReq.responseText;
+			var text;
+			var tmp;
+			json = XMLHttpReq.responseText;
+			json = eval(json);
+			for (var i=0; i<json.length; i++){
+			    text += json[i].id + ":" + json[i].username + ":" + json[i].message + "\n";
+
+			}
+			document.getElementById("chatArea").value = text;
 		}
 		else{
 			//alert("unnormal");

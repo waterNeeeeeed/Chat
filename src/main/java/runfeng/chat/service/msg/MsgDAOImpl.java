@@ -1,13 +1,10 @@
-package runfeng.chat.service.user.msg;
+package runfeng.chat.service.msg;
 
 import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import runfeng.chat.model.msg.Msg;
 import runfeng.chat.service.BaseDAO;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
