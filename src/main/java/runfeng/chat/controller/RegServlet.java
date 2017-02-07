@@ -1,5 +1,6 @@
 package runfeng.chat.controller;
 
+import runfeng.DependencyInject.DependencyInjector;
 import runfeng.chat.action.user.InsertUserAction;
 import runfeng.chat.service.DAOFactory;
 import runfeng.chat.service.user.UserDAO;
@@ -20,7 +21,7 @@ import static runfeng.chat.action.Action.USER_EXISTED;
 @WebServlet("/register")
 public class RegServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    private DependencyInjector di = null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,12 +31,16 @@ public class RegServlet extends HttpServlet {
     }
 
     @Override
+    public void init(){
+        di = new DependencyInjector();
+    }
+
+    @Override
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String age = req.getParameter("age");
-
-        String result = new InsertUserAction().insertUser(username, password, age);
+        String result = ((InsertUserAction)di.getObject(InsertUserAction.class)).insertUser(username, password, age);
         if (SUCCESS.equals(result)){
             req.setAttribute("tip", "用户添加成功 ");
         }

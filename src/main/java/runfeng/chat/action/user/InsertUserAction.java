@@ -8,9 +8,13 @@ import runfeng.chat.service.user.UserDAO;
  * Created by hasee-pc on 2017/2/3.
  */
 public class InsertUserAction implements Action{
+    private UserDAO ud = null;
 
+    public void setUserDAO(UserDAO ud){
+        this.ud = ud;
+    }
     public String insertUser(String username, String password, String age){
-        UserDAO u = DAOFactory.getUserDAO();
+        //UserDAO u = DAOFactory.getUserDAO();
 
         if (age.equals(""))
             return ERROR;
@@ -22,7 +26,7 @@ public class InsertUserAction implements Action{
         if (new ValidUserExistedAction().validUserExisted(username)){
             return USER_EXISTED;
         }
-        if (1 == u.insertUser(username, password, Integer.parseInt(age))){
+        if (1 == ud.insertUser(username, password, Integer.parseInt(age))){
             return SUCCESS;
         }
         return ERROR;
